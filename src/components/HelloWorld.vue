@@ -18,10 +18,10 @@
       </li>
       <li>
         <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router"
+          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript"
           target="_blank"
           rel="noopener"
-          >router</a
+          >typescript</a
         >
       </li>
       <li>
@@ -54,14 +54,6 @@
           target="_blank"
           rel="noopener"
           >e2e-cypress</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript"
-          target="_blank"
-          rel="noopener"
-          >typescript</a
         >
       </li>
     </ul>
