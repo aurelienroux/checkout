@@ -1,8 +1,16 @@
 <template>
   <div>
-    {{ variant.name }}
+    {{ attribute }}
+    {{ selected }}
 
-    <button v-for="(value, index) in variant.values" :key="index">{{ value }}</button>
+    <button
+      :class="{ selected: value === selected }"
+      v-for="(value, index) in data"
+      :key="index"
+      @click="updateData({ attribute, value })"
+    >
+      {{ value }}
+    </button>
   </div>
 </template>
 
@@ -11,6 +19,21 @@ import Vue from 'vue'
 
 export default Vue.extend({
   name: 'AttributeSelector',
-  props: ['variant']
+  props: ['attribute', 'data', 'selected'],
+  methods: {
+    updateData(data) {
+      this.$emit('updateData', data)
+    }
+  }
 })
 </script>
+
+<style lang="scss" scoped>
+div {
+  border: 1px solid;
+}
+
+.selected {
+  background: blueviolet;
+}
+</style>
