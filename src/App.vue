@@ -5,7 +5,6 @@
       <div class="hero-text">hero text</div>
       <div class="cart">
         cart content
-
         <p>test</p>
         <p>test</p>
         <p>test</p>
@@ -57,8 +56,16 @@ html {
 
 .grid {
   display: grid;
+  grid-template-columns: 1.5rem 1fr 1.5rem;
   grid-template-rows: 33rem 11rem auto;
-  grid-template-columns: 1fr 100rem 1fr;
+
+  @include for-tablet-portrait-up {
+    grid-template-columns: 3rem 1fr 3rem;
+  }
+
+  @include for-desktop-up {
+    grid-template-columns: 1fr 110rem 1fr;
+  }
 }
 
 .hero {
@@ -78,9 +85,5 @@ html {
   grid-column: 2 / 3;
   grid-row: 2 / 4;
   padding-top: 1.5rem;
-}
-
-div {
-  border: 1px solid blue;
 }
 </style>
