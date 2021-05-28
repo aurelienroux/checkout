@@ -20,7 +20,7 @@ export default new Vuex.Store({
       axios
         .get('https://api.npoint.io/ec39ab1aa4edf145235a')
         .then(response => {
-          commit('setProducts', response.data)
+          commit('setProducts', response.data.products)
         })
         .catch(e => console.log(e))
     }

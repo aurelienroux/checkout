@@ -4,25 +4,7 @@
       <div class="hero">hero</div>
       <div class="hero-text">hero text</div>
       <div class="cart">
-        cart content
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, quia repellat. Voluptates, animi eum
-        explicabo dolores sequi, obcaecati temporibus quod est labore ratione cupiditate quas nulla,
-        aspernatur sint ut eaque!
+        <ProductTile v-for="(product, index) in products" :key="index" :productInfo="product" />
       </div>
     </div>
   </div>
@@ -30,10 +12,18 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import ProductTile from './components/ProductTile.vue'
 
 export default Vue.extend({
   name: 'App',
-
+  components: {
+    ProductTile
+  },
+  computed: {
+    products() {
+      return this.$store.state.products
+    }
+  },
   mounted() {
     this.$store.dispatch('getProducts')
   }
@@ -42,7 +32,7 @@ export default Vue.extend({
 
 <style lang="scss">
 html {
-  font-size: 10px;
+  font-size: 15px;
 }
 
 #app {
