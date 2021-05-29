@@ -42,13 +42,12 @@ export default Vue.extend({
   },
   computed: {
     selectedVariant(): variant {
-      const result = this.productInfo.variants.filter((variant: variant) => {
+      return this.productInfo.variants.filter((variant: variant) => {
         return (
           variant.attributes[0].value === this.sizeSelected &&
           variant.attributes[1].value === this.fabricSelected
         )
-      })
-      return result[0]
+      })[0]
     },
     sizeOptions() {
       const result: string[] = []

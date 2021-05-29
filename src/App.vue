@@ -34,7 +34,7 @@ export default Vue.extend({
 
 <style lang="scss">
 html {
-  font-size: 15px;
+  font-size: 10px;
 }
 
 #app {
@@ -56,7 +56,7 @@ html {
   }
 
   @include for-desktop-up {
-    grid-template-columns: 1fr 80rem 1fr;
+    grid-template-columns: 1fr 110rem 1fr;
   }
 }
 
