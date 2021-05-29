@@ -2,8 +2,8 @@
   <div>
     <img :src="productInfo.image" :alt="productInfo.name" />
     <div>{{ productInfo.name }}</div>
+    <div>${{ selectedVariant.price }}</div>
     <p>{{ productInfo.description }}</p>
-    <div>price ${{ selectedVariant.price }}</div>
     <AttributeSelector
       attribute="Size"
       :data="possibleSizes"
@@ -52,7 +52,6 @@ export default Vue.extend({
           variant.attributes[1].value === this.selectedFabric
         )
       })
-
       return result[0]
     },
     selectedVariantIndex() {

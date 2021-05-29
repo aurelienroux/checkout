@@ -54,7 +54,7 @@ html {
   }
 
   @include for-desktop-up {
-    grid-template-columns: 1fr 110rem 1fr;
+    grid-template-columns: 1fr 80rem 1fr;
   }
 }
 
