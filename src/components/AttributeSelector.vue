@@ -2,7 +2,8 @@
   <div>
     {{ attribute }}
     <button
-      :class="{ selected: value === selectedValue }"
+      class="button button--grey"
+      :class="{ 'button--selected': value === selectedValue }"
       v-for="(value, index) in attrOptions"
       :key="index"
       @click="updateAttribute({ attribute, value })"

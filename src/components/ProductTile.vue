@@ -16,7 +16,7 @@
       :selectedValue="fabricSelected"
       @updateAttribute="updateAttribute"
     />
-    <button @click="addToCart">add to cart</button>
+    <button class="button button--purple" @click="addToCart">add to cart</button>
   </div>
 </template>
 

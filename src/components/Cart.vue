@@ -1,14 +1,14 @@
 <template>
   <div class="container">
-    payment total: {{ cartTotal }}
-
+    <button class="button button--purple button--large">pay ${{ cartTotal }}</button>
+    <hr />
     <div v-for="(product, index) in cartProducts" :key="index">
       <div>name:{{ product.name }}</div>
       <div>{{ product.description }}</div>
       <div>price:{{ product.price }}</div>
       <div>qty:{{ product.qty }}</div>
-      <button @click="adjustQty(cartActionEnum.ADD, product)">+</button>
-      <button @click="adjustQty(cartActionEnum.REMOVE, product)">-</button>
+      <button class="button button--plain" @click="adjustQty(cartActionEnum.ADD, product)">+</button>
+      <button class="button button--plain" @click="adjustQty(cartActionEnum.REMOVE, product)">-</button>
       <hr />
     </div>
   </div>
