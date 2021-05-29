@@ -4,6 +4,7 @@
       {{ attribute }}
     </span>
     <button
+      data-cy="btn-variant"
       class="button button--grey"
       :class="{ 'button--selected': value === selectedValue }"
       v-for="(value, index) in attrOptions"

@@ -7,9 +7,21 @@
       <h3>{{ product.name }}</h3>
       <p>{{ product.description }}</p>
       <div class="tile__qty">
-        <button class="button button--plain" @click="adjustQty(cartActionEnum.REMOVE, product)">-</button>
-        <span class="qty">{{ product.qty }}</span>
-        <button class="button button--plain" @click="adjustQty(cartActionEnum.ADD, product)">+</button>
+        <button
+          data-cy="remove-item"
+          class="button button--plain"
+          @click="adjustQty(cartActionEnum.REMOVE, product)"
+        >
+          -
+        </button>
+        <span data-cy="product-qty" class="qty">{{ product.qty }}</span>
+        <button
+          data-cy="add-item"
+          class="button button--plain"
+          @click="adjustQty(cartActionEnum.ADD, product)"
+        >
+          +
+        </button>
         <span class="price">${{ product.price }}</span>
       </div>
     </div>

@@ -6,7 +6,7 @@
     <div class="tile__content">
       <header>
         <h2>{{ productInfo.name }}</h2>
-        <div class="price">${{ selectedVariant.price }}</div>
+        <div data-cy="product-price" class="price">${{ selectedVariant.price }}</div>
       </header>
       <p>{{ productInfo.description }}</p>
       <div class="attributes">
@@ -23,7 +23,7 @@
           @updateAttribute="updateAttribute"
         />
       </div>
-      <button class="button button--purple" @click="addToCart">add to cart</button>
+      <button data-cy="add-to-cart" class="button button--purple" @click="addToCart">add to cart</button>
     </div>
   </div>
 </template>
