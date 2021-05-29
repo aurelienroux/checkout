@@ -16,7 +16,7 @@
       :selectedValue="fabricSelected"
       @updateAttribute="updateAttribute"
     />
-    <button>add to cart</button>
+    <button @click="addToCart">add to cart</button>
     <hr />
   </div>
 </template>
@@ -24,7 +24,7 @@
 <script lang="ts">
 import Vue from 'vue'
 
-import { variant, updateAttribute, attributeEnum } from '@/types'
+import { variant, updateAttribute, attributeEnum, productToAdd } from '@/types'
 import AttributeSelector from './AttributeSelector.vue'
 
 export default Vue.extend({
@@ -79,6 +79,16 @@ export default Vue.extend({
     updateAttribute({ attribute, value }: updateAttribute): void {
       if (attribute === attributeEnum.SIZE) this.sizeSelected = value
       if (attribute === attributeEnum.FABRIC) this.fabricSelected = value
+    },
+    addToCart() {
+      const productToAdd: productToAdd = {
+        description: this.selectedVariant.name,
+        name: this.productInfo.name,
+        price: this.selectedVariant.price,
+        productId: this.productInfo.id,
+        variantId: this.selectedVariant.id
+      }
+      this.$store.commit('addToCart', productToAdd)
     }
   },
   created() {

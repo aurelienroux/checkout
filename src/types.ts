@@ -22,6 +22,21 @@ export interface updateAttribute {
   value: string
 }
 
+export interface productToAdd {
+  description: string
+  price: number
+  productId: string
+  variantId: string
+}
+
+export interface productInCart {
+  description: string
+  price: number
+  productId: string
+  qty: number
+  variantId: string
+}
+
 export enum attributeEnum {
   SIZE = 'Size',
   FABRIC = 'Fabric'
