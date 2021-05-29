@@ -1,15 +1,15 @@
 <template>
   <div id="app">
     <div class="grid">
-      <div class="hero__banner"></div>
-      <header class="hero__text">hero text</header>
+      <div class="grid__hero-banner"></div>
+      <header class="grid__hero-text">hero text</header>
       <main>
-        <div class="products-container">
+        <div class="grid__products">
           <ProductTile v-for="product in products" :key="product.id" :productInfo="product" />
         </div>
-        <div class="cart-container">
+        <div class="grid__cart">
           <Cart />
-          <p>powered by acquire</p>
+          <p>powered by <strong>acquire</strong></p>
         </div>
       </main>
     </div>
@@ -61,10 +61,8 @@ export default Vue.extend({
   @include for-desktop-up {
     grid-template-columns: 1fr 120rem 1fr;
   }
-}
 
-.hero {
-  &__banner {
+  &__hero-banner {
     background: url('https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
     background-position: center;
     background-repeat: no-repeat;
@@ -73,24 +71,24 @@ export default Vue.extend({
     grid-row: 1 / 3;
   }
 
-  &__text {
+  &__hero-text {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
   }
-}
 
-main {
-  align-items: flex-start;
-  display: flex;
-  grid-column: 2 / 3;
-  grid-row: 2 / 4;
+  main {
+    align-items: flex-start;
+    display: flex;
+    grid-column: 2 / 3;
+    grid-row: 2 / 4;
+  }
 
-  .products-container {
+  &__products {
     flex: 2;
     margin: 1rem;
   }
 
-  .cart-container {
+  &__cart {
     display: flex;
     flex-direction: column;
     flex: 1;
