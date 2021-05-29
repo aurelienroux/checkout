@@ -16,3 +16,8 @@ export interface variant {
     value: string
   }[]
 }
+
+export interface updateAttribute {
+  attribute: string
+  value: string
+}

@@ -1,8 +1,6 @@
 <template>
   <div>
     {{ attribute }}
-    {{ selected }}
-
     <button
       :class="{ selected: value === selected }"
       v-for="(value, index) in data"
@@ -16,12 +14,13 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { updateAttribute } from '@/types'
 
 export default Vue.extend({
   name: 'AttributeSelector',
   props: ['attribute', 'data', 'selected'],
   methods: {
-    updateData(data) {
+    updateData(data: updateAttribute) {
       this.$emit('updateData', data)
     }
   }

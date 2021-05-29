@@ -1,14 +1,9 @@
 <template>
   <div>
-    {{ productInfo.name }}
-    <div>selectedVariantId: {{ selectedVariantId }}</div>
-    <!-- <div>currentSize {{ currentSize }}</div> -->
-    <div>Price : ${{ currentPrice }}</div>
-    <div>selected size {{ selectedSize }}</div>
-    <div>selected fabric {{ selectedFabric }}</div>
-    <!-- <div>possible Sizes {{ possibleSizes }}</div> -->
-    <!-- <div>possible Fabrics {{ possibleFabrics }}</div> -->
-    <!-- <AttributeSelector v-for="(variant, index) in possibleVariants" :key="index" :variant="variant" /> -->
+    <img :src="productInfo.image" :alt="productInfo.name" />
+    <div>{{ productInfo.name }}</div>
+    <p>{{ productInfo.description }}</p>
+    <div>price ${{ selectedVariant.price }}</div>
     <AttributeSelector
       attribute="Size"
       :data="possibleSizes"
@@ -21,14 +16,15 @@
       :selected="selectedFabric"
       @updateData="updateData"
     />
+    <button>add to cart</button>
     <hr />
   </div>
 </template>
 
 <script lang="ts">
-import { variant } from '@/types'
+import { variant, updateAttribute } from '@/types'
 import Vue from 'vue'
-import AttributeSelector from './AttributeSelector'
+import AttributeSelector from './AttributeSelector.vue'
 
 export default Vue.extend({
   name: 'ProductTile',
@@ -39,46 +35,34 @@ export default Vue.extend({
   data() {
     return {
       selectedVariantId: this.productInfo.defaultVariantId as string,
-      selectedSize: 999,
-      selectedFabric: 666
+      selectedSize: '',
+      selectedFabric: ''
     }
   },
   computed: {
-    currentPrice() {
-      const selectedVariant = this.productInfo.variants.filter((variant: variant) => {
-        return variant.id === this.selectedVariantId.toString()
+    defaultVariantIndex() {
+      return this.productInfo.variants.findIndex((variant: variant) => {
+        return variant.id === this.productInfo.defaultVariantId
       })
-      return selectedVariant[0].price
     },
-    currentSize() {
-      const selectedVariant = this.productInfo.variants.filter((variant: variant) => {
-        return variant.id === this.selectedVariantId.toString()
+    selectedVariant() {
+      const result = this.productInfo.variants.filter((variant: variant) => {
+        return (
+          variant.attributes[0].value === this.selectedSize &&
+          variant.attributes[1].value === this.selectedFabric
+        )
       })
-      return selectedVariant[0].attributes[0].value
+
+      return result[0]
     },
-    // possibleVariants() {
-    //   const result = []
-
-    //   this.productInfo.variants.forEach(({ attributes }) => {
-    //     attributes.forEach(attribute => {
-    //       const { name, value } = attribute
-    //       const index = result.findIndex(el => el['name'] === name)
-
-    //       if (index !== -1) {
-    //         if (result[index].values.includes(value)) return
-
-    //         result[index].values.push(value)
-    //       } else {
-    //         result.push({
-    //           name: name,
-    //           values: [value]
-    //         })
-    //       }
-    //     })
-    //   })
-
-    //   return result
-    // },
+    selectedVariantIndex() {
+      return this.productInfo.variants.findIndex((variant: variant) => {
+        return (
+          variant.attributes[0].value === this.selectedSize &&
+          variant.attributes[1].value === this.selectedFabric
+        )
+      })
+    },
     possibleSizes() {
       const result: string[] = []
 
@@ -101,11 +85,19 @@ export default Vue.extend({
     }
   },
   methods: {
-    updateData(data) {
-      console.log(data)
-
-      this[`selected${data.attribute}`] = data.value
+    updateData({ attribute, value }: updateAttribute) {
+      this[`selected${attribute}`] = value
     }
+  },
+  created() {
+    this.selectedSize = this.productInfo.variants[this.defaultVariantIndex].attributes[0].value
+    this.selectedFabric = this.productInfo.variants[this.defaultVariantIndex].attributes[1].value
   }
 })
 </script>
+
+<style lang="scss" scoped>
+img {
+  max-width: 100px;
+}
+</style>
