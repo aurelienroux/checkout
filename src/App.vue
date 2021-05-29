@@ -79,15 +79,24 @@ export default Vue.extend({
   }
 
   main {
-    align-items: flex-start;
     display: flex;
     grid-column: 2 / 3;
     grid-row: 2 / 4;
+    flex-direction: column;
+
+    @include for-tablet-landscape-up {
+      align-items: flex-start;
+      flex-direction: row;
+    }
   }
 
   &__products {
     flex: 2;
-    margin: 1rem;
+    margin: 1rem 1rem 0;
+
+    @include for-tablet-landscape-up {
+      margin: 1rem;
+    }
   }
 
   &__cart {
