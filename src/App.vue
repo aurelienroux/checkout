@@ -2,7 +2,7 @@
   <div id="app">
     <div class="grid">
       <div class="grid__hero-banner"></div>
-      <header class="grid__hero-text">hero text</header>
+      <Header class="grid__hero-text" />
       <main>
         <div class="grid__products">
           <ProductTile v-for="product in products" :key="product.id" :productInfo="product" />
@@ -20,6 +20,7 @@
 import Vue from 'vue'
 
 import Cart from './components/Cart.vue'
+import Header from './components/Header.vue'
 import ProductTile from './components/ProductTile.vue'
 import { product } from './types'
 
@@ -27,6 +28,7 @@ export default Vue.extend({
   name: 'App',
   components: {
     Cart,
+    Header,
     ProductTile
   },
   computed: {

@@ -15,6 +15,11 @@ body {
   line-height: 1.4;
 }
 
+h1 {
+  font-size: 6rem;
+  font-weight: 900;
+}
+
 h2 {
   font-size: 1.6rem;
   font-weight: 800;
@@ -27,6 +32,15 @@ h3 {
   font-weight: 800;
   margin-top: 0;
   margin-bottom: 0;
+}
+
+a {
+  color: $black;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 p {
