@@ -1,22 +1,30 @@
 <template>
   <div class="tile container">
-    <img :src="productInfo.image" :alt="productInfo.name" />
-    <div>{{ productInfo.name }}</div>
-    <div>${{ selectedVariant.price }}</div>
-    <p>{{ productInfo.description }}</p>
-    <AttributeSelector
-      :attribute="attributeEnum.SIZE"
-      :attrOptions="sizeOptions"
-      :selectedValue="sizeSelected"
-      @updateAttribute="updateAttribute"
-    />
-    <AttributeSelector
-      :attribute="attributeEnum.FABRIC"
-      :attrOptions="fabricOptions"
-      :selectedValue="fabricSelected"
-      @updateAttribute="updateAttribute"
-    />
-    <button class="button button--purple" @click="addToCart">add to cart</button>
+    <div class="tile__image">
+      <img :src="productInfo.image" :alt="productInfo.name" />
+    </div>
+    <div class="tile__content">
+      <header>
+        <h2>{{ productInfo.name }}</h2>
+        <div class="price">${{ selectedVariant.price }}</div>
+      </header>
+      <p>{{ productInfo.description }}</p>
+      <div class="attributes">
+        <AttributeSelector
+          :attribute="attributeEnum.SIZE"
+          :attrOptions="sizeOptions"
+          :selectedValue="sizeSelected"
+          @updateAttribute="updateAttribute"
+        />
+        <AttributeSelector
+          :attribute="attributeEnum.FABRIC"
+          :attrOptions="fabricOptions"
+          :selectedValue="fabricSelected"
+          @updateAttribute="updateAttribute"
+        />
+      </div>
+      <button class="button button--purple" @click="addToCart">add to cart</button>
+    </div>
   </div>
 </template>
 
@@ -100,10 +108,44 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .tile {
+  display: flex;
   margin-bottom: 1rem;
-}
 
-img {
-  max-width: 100px;
+  &__image {
+    background: $image-bg;
+
+    img {
+      max-width: 300px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1.5rem;
+
+    header {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .price {
+      color: $purple;
+      font-weight: 900;
+    }
+
+    p {
+      margin-bottom: 4rem;
+    }
+
+    .attributes {
+      flex: 1;
+    }
+
+    .button {
+      align-self: flex-end;
+    }
+  }
 }
 </style>

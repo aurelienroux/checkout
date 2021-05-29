@@ -12,6 +12,18 @@ body {
   color: $black;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   font-size: 13px;
+  line-height: 1.4;
+}
+
+h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+p {
+  color: $text-color;
 }
 
 .container {
