@@ -39,7 +39,7 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .tile {
   display: flex;
-  margin-bottom: 2rem;
+  margin-top: 2rem;
 
   &__image {
     align-items: center;
@@ -55,6 +55,7 @@ export default Vue.extend({
   &__content {
     flex: 1;
     padding-left: 1rem;
+    text-align: left;
 
     p {
       font-size: 1.1rem;
