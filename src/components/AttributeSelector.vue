@@ -1,6 +1,8 @@
 <template>
-  <div>
-    {{ attribute }}
+  <div class="selector">
+    <span class="selector__name">
+      {{ attribute }}
+    </span>
     <button
       class="button button--grey"
       :class="{ 'button--selected': value === selectedValue }"
@@ -29,7 +31,15 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-.selected {
-  background: blueviolet;
+.selector {
+  align-items: center;
+  display: flex;
+  margin-bottom: 1rem;
+
+  &__name {
+    color: $text-color;
+    flex: 1;
+    font-size: 1.1rem;
+  }
 }
 </style>
