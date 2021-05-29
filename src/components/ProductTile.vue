@@ -108,21 +108,41 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .tile {
-  display: flex;
   margin-bottom: 1rem;
+
+  @include for-tablet-landscape-up {
+    display: flex;
+  }
 
   &__image {
     background: $image-bg;
+    margin-bottom: 1rem;
+    text-align: center;
+
+    @include for-tablet-landscape-up {
+      margin-bottom: 0;
+    }
 
     img {
-      max-width: 300px;
+      max-width: 10rem;
+
+      @include for-tablet-portrait-up {
+        max-width: 20rem;
+      }
+
+      @include for-desktop-up {
+        max-width: 30rem;
+      }
     }
   }
 
   &__content {
     display: flex;
     flex-direction: column;
-    padding-left: 1.5rem;
+
+    @include for-tablet-landscape-up {
+      padding-left: 1.5rem;
+    }
 
     header {
       align-items: center;

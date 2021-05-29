@@ -37,7 +37,7 @@ export default Vue.extend({
   margin: 1rem;
 
   &__title {
-    border-top: 1px solid $white-bg;
+    border-top: 0.1rem solid $white-bg;
     margin: 2.5rem 0 0;
     padding: 2.5rem 0 0;
     text-align-last: left;
