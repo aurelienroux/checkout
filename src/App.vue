@@ -4,7 +4,7 @@
       <div class="hero">hero</div>
       <div class="hero-text">hero text</div>
       <div class="cart">
-        <ProductTile v-for="(product, index) in products" :key="index" :productInfo="product" />
+        <ProductTile v-for="product in products" :key="product.id" :productInfo="product" />
       </div>
     </div>
   </div>
@@ -12,6 +12,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+
 import ProductTile from './components/ProductTile.vue'
 
 export default Vue.extend({

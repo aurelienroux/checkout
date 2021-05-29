@@ -21,3 +21,8 @@ export interface updateAttribute {
   attribute: string
   value: string
 }
+
+export enum attributeEnum {
+  SIZE = 'Size',
+  FABRIC = 'Fabric'
+}

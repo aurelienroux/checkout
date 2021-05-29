@@ -5,16 +5,16 @@
     <div>${{ selectedVariant.price }}</div>
     <p>{{ productInfo.description }}</p>
     <AttributeSelector
-      attribute="Size"
+      :attribute="attributeEnum.SIZE"
       :data="possibleSizes"
-      :selected="selectedSize"
-      @updateData="updateData"
+      :selectedValue="selectedSize"
+      @updateAttribute="updateAttribute"
     />
     <AttributeSelector
-      attribute="Fabric"
+      :attribute="attributeEnum.FABRIC"
       :data="possibleFabrics"
-      :selected="selectedFabric"
-      @updateData="updateData"
+      :selectedValue="selectedFabric"
+      @updateAttribute="updateAttribute"
     />
     <button>add to cart</button>
     <hr />
@@ -22,8 +22,9 @@
 </template>
 
 <script lang="ts">
-import { variant, updateAttribute } from '@/types'
 import Vue from 'vue'
+
+import { variant, updateAttribute, attributeEnum } from '@/types'
 import AttributeSelector from './AttributeSelector.vue'
 
 export default Vue.extend({
@@ -34,18 +35,13 @@ export default Vue.extend({
   },
   data() {
     return {
-      selectedVariantId: this.productInfo.defaultVariantId as string,
+      attributeEnum,
       selectedSize: '',
       selectedFabric: ''
     }
   },
   computed: {
-    defaultVariantIndex() {
-      return this.productInfo.variants.findIndex((variant: variant) => {
-        return variant.id === this.productInfo.defaultVariantId
-      })
-    },
-    selectedVariant() {
+    selectedVariant(): variant {
       const result = this.productInfo.variants.filter((variant: variant) => {
         return (
           variant.attributes[0].value === this.selectedSize &&
@@ -53,14 +49,6 @@ export default Vue.extend({
         )
       })
       return result[0]
-    },
-    selectedVariantIndex() {
-      return this.productInfo.variants.findIndex((variant: variant) => {
-        return (
-          variant.attributes[0].value === this.selectedSize &&
-          variant.attributes[1].value === this.selectedFabric
-        )
-      })
     },
     possibleSizes() {
       const result: string[] = []
@@ -81,11 +69,17 @@ export default Vue.extend({
         result.push(variant.attributes[1].value)
       })
       return result
+    },
+    defaultVariantIndex(): number {
+      return this.productInfo.variants.findIndex((variant: variant) => {
+        return variant.id === this.productInfo.defaultVariantId
+      })
     }
   },
   methods: {
-    updateData({ attribute, value }: updateAttribute) {
-      this[`selected${attribute}`] = value
+    updateAttribute({ attribute, value }: updateAttribute): void {
+      if (attribute === attributeEnum.SIZE) this.selectedSize = value
+      if (attribute === attributeEnum.FABRIC) this.selectedFabric = value
     }
   },
   created() {
