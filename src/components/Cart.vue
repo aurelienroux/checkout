@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     payment total: {{ cartTotal }}
 
     <div v-for="(product, index) in cartProducts" :key="index">

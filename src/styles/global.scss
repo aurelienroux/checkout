@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: $black;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+}
+
+.container {
+  background-color: $white;
+  border-radius: 1rem;
+  padding: 2rem;
+}

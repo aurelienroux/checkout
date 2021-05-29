@@ -1,12 +1,14 @@
 <template>
   <div id="app">
     <div class="grid">
-      <div class="hero">hero</div>
-      <div class="hero-text">hero text</div>
-      <div class="cart">
-        <Cart />
-        <ProductTile v-for="product in products" :key="product.id" :productInfo="product" />
-      </div>
+      <div class="hero__banner"></div>
+      <header class="hero__text">hero text</header>
+      <main>
+        <div class="products">
+          <ProductTile v-for="product in products" :key="product.id" :productInfo="product" />
+        </div>
+        <Cart class="cart" />
+      </main>
     </div>
   </div>
 </template>
@@ -36,17 +38,10 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-html {
-  font-size: 13px;
-}
+@import '@/styles/global.scss';
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  background: rebeccapurple;
+  background: $white-bg;
 }
 
 .grid {
@@ -59,26 +54,41 @@ html {
   }
 
   @include for-desktop-up {
-    grid-template-columns: 1fr 110rem 1fr;
+    grid-template-columns: 1fr 120rem 1fr;
   }
 }
 
 .hero {
-  background: green;
-  grid-column: 1 / 4;
-  grid-row: 1 / 3;
+  &__banner {
+    background: url('https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    grid-column: 1 / 4;
+    grid-row: 1 / 3;
+  }
+
+  &__text {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+  }
 }
 
-.hero-text {
-  background: salmon;
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
-}
-
-.cart {
-  background: rgb(3, 133, 143);
+main {
+  display: flex;
   grid-column: 2 / 3;
   grid-row: 2 / 4;
-  padding-top: 1.5rem;
+
+  .products {
+    flex: 2;
+    margin: 1rem;
+  }
+
+  .cart {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin: 1rem;
+  }
 }
 </style>

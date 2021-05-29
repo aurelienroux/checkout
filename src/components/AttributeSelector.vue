@@ -28,10 +28,6 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-div {
-  border: 1px solid;
-}
-
 .selected {
   background: blueviolet;
 }

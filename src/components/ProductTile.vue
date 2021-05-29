@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="tile container">
     <img :src="productInfo.image" :alt="productInfo.name" />
     <div>{{ productInfo.name }}</div>
     <div>${{ selectedVariant.price }}</div>
@@ -17,7 +17,6 @@
       @updateAttribute="updateAttribute"
     />
     <button @click="addToCart">add to cart</button>
-    <hr />
   </div>
 </template>
 
@@ -99,6 +98,10 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+.tile {
+  margin-bottom: 1rem;
+}
+
 img {
   max-width: 100px;
 }
