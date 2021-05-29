@@ -41,3 +41,8 @@ export enum attributeEnum {
   SIZE = 'Size',
   FABRIC = 'Fabric'
 }
+
+export enum cartActionEnum {
+  ADD = 'add',
+  REMOVE = 'remove'
+}
