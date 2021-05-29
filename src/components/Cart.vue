@@ -1,5 +1,7 @@
 <template>
   <div class="container">
+    <h2>Welcome back Sarah!</h2>
+    <p>Nice to see you again!</p>
     <button class="button button--purple button--large">pay ${{ cartTotal }}</button>
     <hr />
     <div v-for="(product, index) in cartProducts" :key="index">
