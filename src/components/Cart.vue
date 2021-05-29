@@ -1,31 +1,24 @@
 <template>
-  <div class="container">
+  <div class="cart container">
     <h2>Welcome back Sarah!</h2>
     <p>Nice to see you again!</p>
     <button class="button button--purple button--large">pay ${{ cartTotal }}</button>
-    <hr />
+    <h2 class="cart__title">Your cart</h2>
+    <div v-if="cartProducts.length === 0">Your cart is currently empty</div>
     <div v-for="(product, index) in cartProducts" :key="index">
-      <div>name:{{ product.name }}</div>
-      <div>{{ product.description }}</div>
-      <div>price:{{ product.price }}</div>
-      <div>qty:{{ product.qty }}</div>
-      <button class="button button--plain" @click="adjustQty(cartActionEnum.ADD, product)">+</button>
-      <button class="button button--plain" @click="adjustQty(cartActionEnum.REMOVE, product)">-</button>
-      <hr />
+      <ProductCartTile :product="product" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import { productInCart, cartActionEnum } from '@/types'
+import ProductCartTile from './ProductCartTile.vue'
 
 export default Vue.extend({
   name: 'Payment',
-  data() {
-    return {
-      cartActionEnum
-    }
+  components: {
+    ProductCartTile
   },
   computed: {
     cartProducts() {
@@ -34,11 +27,19 @@ export default Vue.extend({
     cartTotal() {
       return this.$store.getters.cartTotal
     }
-  },
-  methods: {
-    adjustQty(action: string, product: productInCart) {
-      this.$store.commit('adjustQty', { action, product })
-    }
   }
 })
 </script>
+
+<style lang="scss" scoped>
+.cart {
+  text-align: center;
+
+  &__title {
+    border-top: 1px solid $white-bg;
+    margin: 2.5rem 0 0;
+    padding: 2.5rem 0;
+    text-align-last: left;
+  }
+}
+</style>
