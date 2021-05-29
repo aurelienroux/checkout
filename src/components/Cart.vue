@@ -34,6 +34,7 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .cart {
   text-align: center;
+  margin: 1rem;
 
   &__title {
     border-top: 1px solid $white-bg;

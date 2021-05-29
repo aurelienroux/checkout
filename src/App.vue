@@ -4,10 +4,13 @@
       <div class="hero__banner"></div>
       <header class="hero__text">hero text</header>
       <main>
-        <div class="products">
+        <div class="products-container">
           <ProductTile v-for="product in products" :key="product.id" :productInfo="product" />
         </div>
-        <Cart class="cart" />
+        <div class="cart-container">
+          <Cart />
+          <p>powered by acquire</p>
+        </div>
       </main>
     </div>
   </div>
@@ -43,7 +46,9 @@ export default Vue.extend({
 #app {
   background: $white-bg;
 }
+</style>
 
+<style lang="scss" scoped>
 .grid {
   display: grid;
   grid-template-columns: 1.5rem 1fr 1.5rem;
@@ -80,16 +85,19 @@ main {
   grid-column: 2 / 3;
   grid-row: 2 / 4;
 
-  .products {
+  .products-container {
     flex: 2;
     margin: 1rem;
   }
 
-  .cart {
+  .cart-container {
     display: flex;
     flex-direction: column;
     flex: 1;
-    margin: 1rem;
+
+    p {
+      text-align: center;
+    }
   }
 }
 </style>

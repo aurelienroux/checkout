@@ -35,7 +35,7 @@ p {
 
 .container {
   background-color: $white;
-  border-radius: 1rem;
+  border-radius: 0.8rem;
   padding: 2rem;
 }
 
@@ -93,5 +93,6 @@ p {
 
   &--large {
     padding: 1.5rem;
+    width: 100%;
   }
 }
