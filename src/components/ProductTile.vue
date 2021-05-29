@@ -82,6 +82,7 @@ export default Vue.extend({
     addToCart() {
       const productToAdd: productToAdd = {
         description: this.selectedVariant.name,
+        image: this.productInfo.image,
         name: this.productInfo.name,
         price: this.selectedVariant.price,
         productId: this.productInfo.id,

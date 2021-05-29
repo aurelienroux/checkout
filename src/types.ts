@@ -24,6 +24,8 @@ export interface updateAttribute {
 
 export interface productToAdd {
   description: string
+  image: string
+  name: string
   price: number
   productId: string
   variantId: string
