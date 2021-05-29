@@ -3,17 +3,10 @@ import { shallowMount, createLocalVue } from '@vue/test-utils'
 
 import Cart from '@/components/Cart.vue'
 import { productInCart } from '@/types'
+import { productInCartMock } from './__mocks__'
 
 const localVue = createLocalVue()
 localVue.use(Vuex)
-
-const product = {
-  description: 'description',
-  price: 100,
-  productId: '1',
-  qty: 4,
-  variantId: '4'
-}
 
 function createLocalWrapper(cartTotal: number, cartState: productInCart[]) {
   const store = new Vuex.Store({
@@ -22,10 +15,12 @@ function createLocalWrapper(cartTotal: number, cartState: productInCart[]) {
     }
   })
 
+  const computed = {
+    cartProducts: () => cartState
+  }
+
   return shallowMount(Cart, {
-    computed: {
-      cartProducts: () => cartState
-    },
+    computed,
     store,
     localVue
   })
@@ -42,7 +37,7 @@ describe('Cart component', () => {
   })
 
   it('renders with products in cart', () => {
-    const wrapper = createLocalWrapper(199, [product, product])
+    const wrapper = createLocalWrapper(199, [productInCartMock, productInCartMock])
 
     expect(wrapper).toMatchSnapshot()
     expect(wrapper.find('button').text()).toContain('pay $199')

@@ -1,31 +1,14 @@
 import { shallowMount } from '@vue/test-utils'
+
 import ProductCartTile from '@/components/ProductCartTile.vue'
 import { cartActionEnum } from '@/types'
-
-const product = {
-  id: '1',
-  name: 'product name',
-  image: 'http://image.example',
-  variants: [
-    {
-      id: '1',
-      name: '36 / cotton',
-      price: 99,
-      attributes: {
-        name: 'Size',
-        value: '36'
-      }
-    }
-  ],
-  description: 'string',
-  defaultVariantId: 'string'
-}
+import { productMock } from './__mocks__'
 
 const adjustQty = jest.fn()
 
 const wrapper = shallowMount(ProductCartTile, {
   propsData: {
-    product
+    product: productMock
   },
   methods: {
     adjustQty
@@ -45,6 +28,6 @@ describe('ProductCartTile component', () => {
 
   it('triggers adjustQty method on click', async () => {
     await wrapper.findAll('.button').at(0).trigger('click')
-    expect(adjustQty).toHaveBeenCalledWith(cartActionEnum.REMOVE, product)
+    expect(adjustQty).toHaveBeenCalledWith(cartActionEnum.REMOVE, productMock)
   })
 })
