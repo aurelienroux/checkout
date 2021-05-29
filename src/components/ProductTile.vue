@@ -24,8 +24,8 @@
 <script lang="ts">
 import Vue from 'vue'
 
-import { variant, updateAttribute, attributeEnum, productToAdd } from '@/types'
 import AttributeSelector from './AttributeSelector.vue'
+import { variant, updateAttribute, attributeEnum, productToAdd } from '@/types'
 
 export default Vue.extend({
   name: 'ProductTile',
