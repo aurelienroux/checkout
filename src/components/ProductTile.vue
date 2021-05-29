@@ -6,14 +6,14 @@
     <p>{{ productInfo.description }}</p>
     <AttributeSelector
       :attribute="attributeEnum.SIZE"
-      :data="possibleSizes"
-      :selectedValue="selectedSize"
+      :attrOptions="sizeOptions"
+      :selectedValue="sizeSelected"
       @updateAttribute="updateAttribute"
     />
     <AttributeSelector
       :attribute="attributeEnum.FABRIC"
-      :data="possibleFabrics"
-      :selectedValue="selectedFabric"
+      :attrOptions="fabricOptions"
+      :selectedValue="fabricSelected"
       @updateAttribute="updateAttribute"
     />
     <button>add to cart</button>
@@ -36,21 +36,21 @@ export default Vue.extend({
   data() {
     return {
       attributeEnum,
-      selectedSize: '',
-      selectedFabric: ''
+      sizeSelected: '',
+      fabricSelected: ''
     }
   },
   computed: {
     selectedVariant(): variant {
       const result = this.productInfo.variants.filter((variant: variant) => {
         return (
-          variant.attributes[0].value === this.selectedSize &&
-          variant.attributes[1].value === this.selectedFabric
+          variant.attributes[0].value === this.sizeSelected &&
+          variant.attributes[1].value === this.fabricSelected
         )
       })
       return result[0]
     },
-    possibleSizes() {
+    sizeOptions() {
       const result: string[] = []
 
       this.productInfo.variants.forEach((variant: variant) => {
@@ -60,7 +60,7 @@ export default Vue.extend({
       })
       return result
     },
-    possibleFabrics() {
+    fabricOptions() {
       const result: string[] = []
 
       this.productInfo.variants.forEach((variant: variant) => {
@@ -78,13 +78,13 @@ export default Vue.extend({
   },
   methods: {
     updateAttribute({ attribute, value }: updateAttribute): void {
-      if (attribute === attributeEnum.SIZE) this.selectedSize = value
-      if (attribute === attributeEnum.FABRIC) this.selectedFabric = value
+      if (attribute === attributeEnum.SIZE) this.sizeSelected = value
+      if (attribute === attributeEnum.FABRIC) this.fabricSelected = value
     }
   },
   created() {
-    this.selectedSize = this.productInfo.variants[this.defaultVariantIndex].attributes[0].value
-    this.selectedFabric = this.productInfo.variants[this.defaultVariantIndex].attributes[1].value
+    this.sizeSelected = this.productInfo.variants[this.defaultVariantIndex].attributes[0].value
+    this.fabricSelected = this.productInfo.variants[this.defaultVariantIndex].attributes[1].value
   }
 })
 </script>

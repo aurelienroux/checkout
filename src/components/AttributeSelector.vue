@@ -3,7 +3,7 @@
     {{ attribute }}
     <button
       :class="{ selected: value === selectedValue }"
-      v-for="(value, index) in data"
+      v-for="(value, index) in attrOptions"
       :key="index"
       @click="updateAttribute({ attribute, value })"
     >
@@ -19,10 +19,10 @@ import { updateAttribute } from '@/types'
 
 export default Vue.extend({
   name: 'AttributeSelector',
-  props: ['attribute', 'data', 'selectedValue'],
+  props: ['attribute', 'attrOptions', 'selectedValue'],
   methods: {
-    updateAttribute(data: updateAttribute) {
-      this.$emit('updateAttribute', data)
+    updateAttribute(attributePayload: updateAttribute) {
+      this.$emit('updateAttribute', attributePayload)
     }
   }
 })

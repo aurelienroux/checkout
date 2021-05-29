@@ -14,6 +14,7 @@
 import Vue from 'vue'
 
 import ProductTile from './components/ProductTile.vue'
+import { product } from './types'
 
 export default Vue.extend({
   name: 'App',
@@ -21,7 +22,7 @@ export default Vue.extend({
     ProductTile
   },
   computed: {
-    products() {
+    products(): product[] {
       return this.$store.state.products
     }
   },
