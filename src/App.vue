@@ -4,7 +4,7 @@
       <div class="hero">hero</div>
       <div class="hero-text">hero text</div>
       <div class="cart">
-        <Payment />
+        <Cart />
         <ProductTile v-for="product in products" :key="product.id" :productInfo="product" />
       </div>
     </div>
@@ -14,14 +14,14 @@
 <script lang="ts">
 import Vue from 'vue'
 
+import Cart from './components/Cart.vue'
 import ProductTile from './components/ProductTile.vue'
-import Payment from './components/Payment.vue'
 import { product } from './types'
 
 export default Vue.extend({
   name: 'App',
   components: {
-    Payment,
+    Cart,
     ProductTile
   },
   computed: {

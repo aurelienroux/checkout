@@ -2,11 +2,13 @@
   <div>
     payment total: {{ cartTotal }}
 
-    <div v-for="(product, index) in cart" :key="index">
+    <div v-for="(product, index) in cartProducts" :key="index">
       <div>name:{{ product.name }}</div>
       <div>{{ product.description }}</div>
       <div>price:{{ product.price }}</div>
       <div>qty:{{ product.qty }}</div>
+      <button @click="adjustQty(cartActionEnum.ADD, product)">+</button>
+      <button @click="adjustQty(cartActionEnum.REMOVE, product)">-</button>
       <hr />
     </div>
   </div>
@@ -14,14 +16,26 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { productInCart, cartActionEnum } from '@/types'
+
 export default Vue.extend({
   name: 'Payment',
+  data() {
+    return {
+      cartActionEnum
+    }
+  },
   computed: {
-    cart() {
+    cartProducts() {
       return this.$store.state.cart
     },
     cartTotal() {
       return this.$store.getters.cartTotal
+    }
+  },
+  methods: {
+    adjustQty(action: string, product: productInCart) {
+      this.$store.commit('adjustQty', { action, product })
     }
   }
 })
