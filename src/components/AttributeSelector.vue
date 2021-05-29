@@ -21,7 +21,20 @@ import { updateAttribute } from '@/types'
 
 export default Vue.extend({
   name: 'AttributeSelector',
-  props: ['attribute', 'attrOptions', 'selectedValue'],
+  props: {
+    attribute: {
+      type: String,
+      required: true
+    },
+    attrOptions: {
+      type: Array,
+      required: true
+    },
+    selectedValue: {
+      type: String,
+      required: true
+    }
+  },
   methods: {
     updateAttribute(attributePayload: updateAttribute) {
       this.$emit('updateAttribute', attributePayload)

@@ -22,7 +22,12 @@ import { productInCart, cartActionEnum } from '@/types'
 
 export default Vue.extend({
   name: 'ProductCartTile',
-  props: ['product'],
+  props: {
+    product: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
       cartActionEnum

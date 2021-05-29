@@ -2,7 +2,7 @@
   <header class="header">
     <div class="header__top">
       <span>allbirds</span>
-      <a href="https://www.allbirds.ca/" target="_blank" rel="noopener noreferrer"> visit allbirds.ca --></a>
+      <a href="https://www.allbirds.ca/" target="_blank" rel="noopener noreferrer">visit allbirds.ca --></a>
     </div>
     <h1>Jenny's outfit</h1>
     <h2>Dress like your idole with this super bundle and be the star you always wanted to be!</h2>

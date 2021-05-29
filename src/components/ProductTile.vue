@@ -36,15 +36,20 @@ import { variant, updateAttribute, attributeEnum, productToAdd } from '@/types'
 
 export default Vue.extend({
   name: 'ProductTile',
-  props: ['productInfo'],
+  props: {
+    productInfo: {
+      type: Object,
+      required: true
+    }
+  },
   components: {
     AttributeSelector
   },
   data() {
     return {
       attributeEnum,
-      sizeSelected: '',
-      fabricSelected: ''
+      fabricSelected: '',
+      sizeSelected: ''
     }
   },
   computed: {
@@ -100,8 +105,10 @@ export default Vue.extend({
     }
   },
   created() {
-    this.sizeSelected = this.productInfo.variants[this.defaultVariantIndex].attributes[0].value
-    this.fabricSelected = this.productInfo.variants[this.defaultVariantIndex].attributes[1].value
+    const index = this.defaultVariantIndex
+
+    this.sizeSelected = this.productInfo.variants[index].attributes[0].value
+    this.fabricSelected = this.productInfo.variants[index].attributes[1].value
   }
 })
 </script>
