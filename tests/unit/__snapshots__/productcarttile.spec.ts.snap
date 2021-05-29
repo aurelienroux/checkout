@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductCartTile component renders without crashing 1`] = `
+<div class="tile">
+  <div class="tile__image"><img src="http://image.example" alt="product name"></div>
+  <div class="tile__content">
+    <h3>product name</h3>
+    <p>string</p>
+    <div class="tile__qty"><button class="button button--plain">-</button> <span class="qty"></span> <button class="button button--plain">+</button> <span class="price">$</span></div>
+  </div>
+</div>
+`;

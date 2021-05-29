@@ -106,6 +106,7 @@ export default Vue.extend({
   },
   created() {
     const index = this.defaultVariantIndex
+    if (!this.productInfo.variants[index]) return
 
     this.sizeSelected = this.productInfo.variants[index].attributes[0].value
     this.fabricSelected = this.productInfo.variants[index].attributes[1].value

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AttributeSelector component renders without crashing 1`] = `
+<div class="selector"><span class="selector__name">
+    Size
+  </span> <button class="button button--grey button--selected">
+    36
+  </button><button class="button button--grey">
+    38
+  </button></div>
+`;
