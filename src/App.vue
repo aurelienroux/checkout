@@ -43,7 +43,7 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-@import '@/styles/global.scss';
+@import '@/scss/global.scss';
 
 #app {
   background: $white-bg;

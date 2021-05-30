@@ -6,13 +6,13 @@ exports[`ProductTile component renders without crashing 1`] = `
   <div class="tile__content">
     <header>
       <h2>product name</h2>
-      <div class="price">$99</div>
+      <div data-cy="product-price" class="price">$99</div>
     </header>
     <p>description</p>
     <div class="attributes">
       <attributeselector-stub attribute="Size" attroptions="36,38" selectedvalue="36"></attributeselector-stub>
       <attributeselector-stub attribute="Fabric" attroptions="cotton,leather" selectedvalue="cotton"></attributeselector-stub>
-    </div> <button class="button button--purple">add to cart</button>
+    </div> <button data-cy="add-to-cart" class="button button--purple">add to cart</button>
   </div>
 </div>
 `;

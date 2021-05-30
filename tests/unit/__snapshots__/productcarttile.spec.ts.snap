@@ -6,7 +6,11 @@ exports[`ProductCartTile component renders without crashing 1`] = `
   <div class="tile__content">
     <h3>product name</h3>
     <p>description</p>
-    <div class="tile__qty"><button class="button button--plain">-</button> <span class="qty"></span> <button class="button button--plain">+</button> <span class="price">$</span></div>
+    <div class="tile__qty"><button data-cy="remove-item" class="button button--plain">
+        -
+      </button> <span data-cy="product-qty" class="qty"></span> <button data-cy="add-item" class="button button--plain">
+        +
+      </button> <span class="price">$</span></div>
   </div>
 </div>
 `;

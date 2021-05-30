@@ -3,8 +3,8 @@ module.exports = {
     loaderOptions: {
       scss: {
         prependData: `
-          @import "@/styles/variables.scss";
-          @import "@/styles/mixins.scss";
+          @import "@/scss/variables.scss";
+          @import "@/scss/mixins.scss";
         `
       }
     }
